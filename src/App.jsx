@@ -1,4 +1,6 @@
+import axios from 'axios';
 import { useState } from 'react';
+import api from './api/api';
 import.meta.env;
 
 function App() {
@@ -8,13 +10,44 @@ function App() {
     exclude: '',
     response: '',
   });
+  const getReciepe = async keyword => {
+    const response = await api.handleRecipe(keyword);
+    // console.log(response);
 
+    console.log('keyword', keyword, 'data', response);
 
+    setValues({ ...values, response });
+  };
   console.log(values);
   const onSubmit = async e => {
     e.preventDefault();
     e.stopPropagation();
+    getReciepe(values.keyword);
+    // handleReciepe();
   };
+
+  // Regular way
+  // const handleReciepe = async () => {
+  //   try {
+  //     const options = {
+  //       method: 'GET',
+  //       url: 'https://calorieninjas.p.rapidapi.com/v1/nutrition',
+  //       params: { query: values.keyword },
+  //       headers: {
+  //         'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com',
+  //         'X-RapidAPI-Key':
+  //           '680ec0ce0amshb5094a6d52a0d98p1f34efjsn538a7176f19f',
+  //       },
+  //     };
+
+  //     const response = await axios.request(options);
+  //     console.log('recipe', response.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  console.log('Output', values.response.data.items[0]);
 
   return (
     <div className='container'>
@@ -27,11 +60,12 @@ function App() {
           <input
             type='text'
             placeholder='Search for reciepe'
-            onChange={e =>
-              setValues({ ...values, keyword: e.target.value, response: null })
-            }
+            onChange={e => {
+              setValues({ ...values, keyword: e.target.value, response: null });
+              // getReciepe(e.target.value);
+            }}
           />
-
+          {/* 
           <div className='flex'>
             <div className='form-control'>
               <label>Diet</label>
@@ -58,7 +92,7 @@ function App() {
                 }
               />
             </div>
-          </div>
+          </div> */}
           <button type='submit'>Search</button>
         </form>
       </div>
