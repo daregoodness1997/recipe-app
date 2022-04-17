@@ -47,7 +47,7 @@ function App() {
   //   }
   // };
 
-  console.log('Output', values.response.data.items[0]);
+  console.log('Output', values.response.data);
 
   return (
     <div className='container'>
@@ -61,12 +61,12 @@ function App() {
             type='text'
             placeholder='Search for reciepe'
             onChange={e => {
-              setValues({ ...values, keyword: e.target.value, response: null });
+              setValues({ ...values, keyword: e.target.value });
               // getReciepe(e.target.value);
             }}
           />
-          {/* 
-          <div className='flex'>
+
+          {/* <div className='flex'>
             <div className='form-control'>
               <label>Diet</label>
               <input
