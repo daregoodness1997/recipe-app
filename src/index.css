@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  color: #eee;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(5, 1, 33);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.box {
+  width: 40%;
+}
+
+.text-header {
+  text-align: center;
+}
+
+.text-header p {
+  font-size: 12px;
+  margin: 0.4rem 0;
+  color: #ddd;
+}
+
+.box form {
+  width: 100%;
+  margin-top: 20px;
+}
+label {
+  font-size: 14px;
+}
+
+input {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  color: white;
+  background: palevioletred;
+  border: none;
+  transition: background 0.4s ease-in-out;
+  border-radius: 4px;
+}
+
+button:hover,
+button:focus,
+button:active {
+  background: rgb(250, 137, 156);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex div {
+  width: 48%;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 80%;
+  }
+  .flex div {
+    width: 100%;
+  }
+}
